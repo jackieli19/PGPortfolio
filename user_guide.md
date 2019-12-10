@@ -63,8 +63,8 @@ Under the `nntrader/nntrader` directory, there is a json file called `net_config
       * On GTX1060 you should be able to run 2-3 training together.
     * Each training process is made up from 2 stages:
       * Pre-training, log example:
-      
-      
+
+
 ```
 INFO:root:average time for data accessing is 0.00070324587822
 INFO:root:average time for training is 0.0032548391819
@@ -79,8 +79,8 @@ log mean without commission fee is 0.000378
 INFO:root:==============================
 
 ```
-        
-        
+
+
       * Backtest with rolling train, log example:
 ```
         DEBUG:root:==============================
@@ -99,7 +99,7 @@ There are three types of logging of each training.
 * The summary infomation of this training, including network configuration, portfolio value on validation set and test set etc., will be saved in the `train_summary.csv` under `train_pakage` folder
 
 ## Save and Restore of the Model
-* The trained weights of the network are saved at `train_package/1` named as `netfile` (including 3 files). 
+* The trained weights of the network are saved at `train_package/1` named as `netfile` (including 3 files).
 
 ## Download Data
 * Type `python main.py --mode=download_data` you can download data without starting training
@@ -108,7 +108,7 @@ There are three types of logging of each training.
 * The downloading speed could be very slow and sometimes even have error in China.
 * For those who cann't download data, please check the first release where there is a `Data.db` file, put it in the database folder. Make sure the `online` in `input` in `net_config.json` to be `false` and run the example.
   * Note that using the this file, you shouldn't make any changes to input data configuration(For example `start_date`, `end_date` or `coin_number`) otherwise incorrect result might be presented.
-  
+
 ## Back-test
 *Note: Before back-testing, you need to suceessfully finish training of algo first*
 * Type `python main.py --mode=backtest --algo=1` to execute
