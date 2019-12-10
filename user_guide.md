@@ -1,6 +1,6 @@
 # User Guide
 ## Configuration File
-Under the `nntrader/nntrader` directory, there is a json file called `net_config.json`,
+Under the `PGPortfolio/PGPortfolio` directory, there is a json file called `net_config.json`,
  holding all the configuration of the agent and could be modified outside the program code.
 ### Network Topology
 * `"layers"`
@@ -48,8 +48,8 @@ Under the `nntrader/nntrader` directory, there is a json file called `net_config
         * if it is online, new data that dose not exist in the database would be saved
 
 ## Training and Tuning the hyper-parameters
-1. First, modify the `nntrader/nntrader/net_config.json` file.
-2. make sure current directory is under `nntrader` and type `python main.py --mode=generate --repeat=1`
+1. First, modify the `PGPortfolio/PGPortfolio/net_config.json` file.
+2. make sure current directory is under `PGPortfolio` and type `python main.py --mode=generate --repeat=1`
     * this will make 1 subfolders under the `train_package`
     * in each subfolder, there is a copy of the `net_config.json`
     * `--repeat=n`, n could followed by any positive integers. The random seed of each the subfolder is from 0 to n-1 sequentially.
@@ -87,7 +87,7 @@ INFO:root:==============================
 INFO:root:the step is 1433
 INFO:root:total assets are 17.732482 BTC
 ```
-4. after that, check the result summary of the training in `nntrader/train_package/train_summary.csv`
+4. after that, check the result summary of the training in `PGPortfolio/train_package/train_summary.csv`
 5. tune the hyper-parameters based on the summary, and go to 1 again.
 
 ## Logging
@@ -103,7 +103,7 @@ There are three types of logging of each training.
 
 ## Download Data
 * Type `python main.py --mode=download_data` you can download data without starting training
-* The program will use the configurations in `nntrader/nntrader/net_config` to select coins and
+* The program will use the configurations in `PGPortfolio/PGPortfolio/net_config` to select coins and
   download necessary data to train the network.
 * The downloading speed could be very slow and sometimes even have error in China.
 * For those who cann't download data, please check the first release where there is a `Data.db` file, put it in the database folder. Make sure the `online` in `input` in `net_config.json` to be `false` and run the example.
@@ -119,7 +119,7 @@ on the target model.
 ## Tradition Agent
 OLPS summary:
 
-![](https://github.com/DexHunter/nntrader/blob/dev/images/olps_algo.png)
+![](https://github.com/DexHunter/PGPortfolio/blob/dev/images/olps_algo.png)
 
 ## Plotting
 * type `python main.py --mode=plot --algos=crp,olmar,1 --labels=crp,olmar,nnagent
@@ -131,12 +131,12 @@ the index of nnagent
 ![](http://static.zybuluo.com/rooftrellen/u75egf9roy9c2sju48v6uu6o/result.png)
 
 ## present backtest results in a table
-* type `python main.py --mode=table --algos=1,olmar,ons --labels=nntrader,olmar,ons`
+* type `python main.py --mode=table --algos=1,olmar,ons --labels=PGPortfolio,olmar,ons`
 * `--algos` and `--lables` are the same as in plotting case
 * result:
 ```
            average  max drawdown  negative day  negative periods  negative week  portfolio value  positive periods  postive day  postive week  sharpe ratio
-nntrader  1.001311      0.225874           781              1378            114        25.022516              1398         1995          2662      0.074854
+PGPortfolio  1.001311      0.225874           781              1378            114        25.022516              1398         1995          2662      0.074854
 olmar     1.000752      0.604886          1339              1451           1217         4.392879              1319         1437          1559      0.035867
 ons       1.000231      0.217216          1144              1360            731         1.770931              1416         1632          2045      0.032605
 
