@@ -69,6 +69,7 @@ class HistoryManager:
         self.__checkperiod(period)
 
         time_index = pd.to_datetime(list(range(start, end+1, period)),unit='s')
+        
         panel = pd.Panel(items=features, major_axis=coins, minor_axis=time_index, dtype=np.float32)
 
         connection = sqlite3.connect(DATABASE_DIR)
@@ -78,12 +79,12 @@ class HistoryManager:
                     # NOTE: transform the start date to end date
                     if feature == "close":
                         sql = ("SELECT date+300 AS date_norm, close FROM History WHERE"
-                               " date_norm>={start} and date_norm<={end}" 
+                               " date_norm>={start} and date_norm<={end}"
                                " and date_norm%{period}=0 and coin=\"{coin}\"".format(
                                start=start, end=end, period=period, coin=coin))
                     elif feature == "open":
                         sql = ("SELECT date+{period} AS date_norm, open FROM History WHERE"
-                               " date_norm>={start} and date_norm<={end}" 
+                               " date_norm>={start} and date_norm<={end}"
                                " and date_norm%{period}=0 and coin=\"{coin}\"".format(
                                start=start, end=end, period=period, coin=coin))
                     elif feature == "volume":

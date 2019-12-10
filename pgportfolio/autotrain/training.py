@@ -40,6 +40,7 @@ def train_all(processes=1, device="cpu"):
                       at file and info at console. If greater than 1, the logging level is
                       info at file and warming at console.
     """
+
     if processes == 1:
         console_level = logging.INFO
         logfile_level = logging.DEBUG
@@ -51,8 +52,11 @@ def train_all(processes=1, device="cpu"):
         os.makedirs("./" + train_dir)
     all_subdir = os.listdir("./" + train_dir)
     all_subdir.sort()
+
     pool = []
     for dir in all_subdir:
+        if dir=='.DS_Store':
+            continue
         # train only if the log dir does not exist
         if not str.isdigit(dir):
             return
