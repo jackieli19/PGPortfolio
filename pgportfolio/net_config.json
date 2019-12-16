@@ -1,8 +1,7 @@
 {
   "layers":
   [
-    {"filter_shape": [1, 2], "filter_number": 3, "type": "ConvLayer"},
-    {"filter_number":10, "type": "EIIE_Dense", "regularizer": "L2", "weight_decay": 5e-9},
+    {"neuron_number": 20, "type": "EIIE_RNN"},
     {"type": "EIIE_Output_WithW","regularizer": "L2", "weight_decay": 5e-8}
   ],
   "training":{
@@ -23,8 +22,8 @@
     "feature_number":3,
     "test_portion":0.08,
     "online":false,
-    "start_date":"2015/07/01",
-    "end_date":"2017/07/01",
+    "start_date":"2017/12/12",
+    "end_date":"2019/12/11",
     "volume_average_days":30,
     "portion_reversed": false
   },

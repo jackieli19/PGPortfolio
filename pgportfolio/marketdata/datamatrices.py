@@ -11,6 +11,9 @@ import pgportfolio.marketdata.replaybuffer as rb
 
 MIN_NUM_PERIOD = 3
 
+import warnings
+warnings.filterwarnings("ignore") # suppress all warnings
+
 
 class DataMatrices:
     def __init__(self, start, end, period, batch_size=50, volume_average_days=30, buffer_bias_ratio=0,
@@ -154,6 +157,7 @@ class DataMatrices:
         batch_size
         """
         batch = self.__pack_samples([exp.state_index for exp in self.__replay_buffer.next_experience_batch()])
+        
         return batch
 
     def __pack_samples(self, indexs):

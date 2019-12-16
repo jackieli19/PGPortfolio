@@ -14,6 +14,10 @@ import tensorflow as tf
 from pgportfolio.learn.nnagent import NNAgent
 from pgportfolio.marketdata.datamatrices import DataMatrices
 import logging
+tf.logging.set_verbosity(tf.logging.ERROR)
+#tf.python.util.deprecation._PRINT_DEPRECATION_WARNINGS = False
+
+
 Result = collections.namedtuple("Result",
                                 [
                                  "test_pv",
@@ -242,4 +246,3 @@ class TraderTrainer:
         if int(index) > 0:
             dataframe.to_csv(csv_dir)
         return result
-

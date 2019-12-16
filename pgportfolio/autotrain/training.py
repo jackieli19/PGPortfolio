@@ -55,6 +55,7 @@ def train_all(processes=1, device="cpu"):
 
     pool = []
     for dir in all_subdir:
+        # for MacOS, skip this file
         if dir=='.DS_Store':
             continue
         # train only if the log dir does not exist

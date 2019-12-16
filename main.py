@@ -72,7 +72,7 @@ def main():
                      end=end,
                      feature_number=config["input"]["feature_number"],
                      window_size=config["input"]["window_size"],
-                     online=True,
+                     online=True, ###???
                      period=config["input"]["global_period"],
                      volume_average_days=config["input"]["volume_average_days"],
                      coin_filter=config["input"]["coin_number"],
